@@ -1,13 +1,41 @@
-import Image from "next/image"
+"use client"
+
 import bgImg from "@/app/images/Icosahedron.png"
+import {
+	motion,
+	useScroll,
+	useTransform,
+} from "framer-motion";
+import { useRef } from "react";
 
 const Hero = () => {
+	const heroRef = useRef(null);
+	const { scrollYProgress } = useScroll({
+		target: heroRef,
+		offset: ["start end", "end start"],
+	});
+	const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
 	return (
-		<section className="py-36 md:py-44">
+		<section ref={heroRef} className="py-36 md:py-44">
 			<div className="relative backdrop-blur-xl ">
 
-				<Image src={bgImg} alt="background image" className="absolute -z-30 left-60 top-1/4 size-32 blur-sm animate-pulse" />
-				<Image src={bgImg} alt="background image" className="absolute -z-20 right-28 bottom-0 size-80 blur-sm animate-pulse" />
+				<motion.img
+					src={bgImg.src}
+					style={{
+						translateY: translateY,
+					}}
+					alt="background image"
+					className="absolute z-20 left-20 top-1/4 size-32 hidden md:block"
+				/>
+				<motion.img
+					src={bgImg.src}
+					style={{
+						translateY: translateY,
+					}}
+					alt="background image"
+					className="absolute -z-20 -right-24 bottom-0 size-52 lg:size-80"
+				/>
 
 
 				<div className="space-y-9 md:max-w-3xl mx-auto text-center relative z-10">

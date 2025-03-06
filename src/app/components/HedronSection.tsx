@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export default function HedronSection() {
   return (
-    <section className="relative w-full bg-black min-h-[500px] flex items-center py-16 px-4 md:px-8 lg:px-16 overflow-hidden lg:px-44">
+    <section className="relative w-full bg-black min-h-[500px] flex items-center py-16 px-4 md:px-8 lg:px-16 overflow-hidden">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-transparent opacity-30"></div>
 

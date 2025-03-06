@@ -1,9 +1,13 @@
+"use client"
+
 import Image from "next/image";
 import bgImg from "@/app/images/dounut.png"
 import img1 from "@/app/images/heartImg1.png"
 import img2 from "@/app/images/heartImg2.png"
 import img3 from "@/app/images/heartImg3.png"
 import img4 from "@/app/images/heartImg4.png"
+import { motion } from "framer-motion";
+
 
 const data = [
 	{
@@ -55,10 +59,22 @@ const TheHeart = () => {
 				<div className="container mx-auto flex items-center justify-center flex-col text-white">
 					<div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-20">
 						{data.map((item, index) => (
-							<div className="flex flex-col gap-y-4 max-w-72" key={index}> 
+							<div className="flex flex-col gap-y-4 max-w-72" key={index}>
 								<div className="relative">
 									<div className="absolute w-10 h-10 bottom-10 left-12 size-30 bg-slate-400 blur-xl" />
-									<Image src={item.img} alt="" className="relative size-40" />
+									<motion.img
+										src={item.img.src}
+										animate={{
+											translateY: [-10, 10],
+										}}
+										transition={{
+											repeat: Infinity,
+											repeatType: "mirror",
+											duration: 2,
+											ease: "easeInOut",
+										}}
+										alt=""
+										className="relative size-40" />
 								</div>
 								<h2 className="font-bold text-3xl">{item.subtitle}</h2>
 								<p>{item.content}</p>

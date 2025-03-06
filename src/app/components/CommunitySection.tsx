@@ -1,6 +1,13 @@
+"use client"
+
+import {
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 import Sphere from "@/app/images/sphere.png"
 
 interface CommunityLinkProps {
@@ -33,6 +40,12 @@ function CommunityLink({ title, description, href }: CommunityLinkProps) {
 }
 
 export default function CommunitySection() {
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start end", "end start"],
+  });
+  const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
   const communityLinks = [
     {
       title: "Community Chat",
@@ -57,10 +70,18 @@ export default function CommunitySection() {
   ]
 
   return (
-    <section className="bg-black text-white relative lg:px-44">
+    <section
+      ref={heroRef}
+      className="bg-black text-white relative">
       {/* Purple gradient circle */}
       <div className="absolute -left-44 lg:-left-80 top-20 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px]">
-        <Image src={Sphere} alt="" />
+        <motion.img
+          style={{
+            translateY: translateY,
+          }}
+          src={Sphere.src}
+          alt=""
+        />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-24 lg:py-32">

@@ -1,12 +1,35 @@
+"use client"
+
 import Cylinder from "@/app/images/Cylinder.png"
-import Image from "next/image"
+import {
+	motion,
+	useScroll,
+	useTransform,
+} from "framer-motion";
+import { useRef } from "react";
 
 export default function TechnologySection() {
+	const heroRef = useRef(null);
+	const { scrollYProgress } = useScroll({
+		target: heroRef,
+		offset: ["start end", "end start"],
+	});
+	const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+
+
 	return (
-		<section className="relative text-white lg:px-44">
+		<section
+			ref={heroRef}
+			className="relative text-white">
 			{/* Purple gradient blob */}
-			<div className="absolute top-0 -right-64 w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
-				<Image src={Cylinder} alt="" />
+			<div className="absolute top-0 md:-right-80 w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
+				<motion.img
+					src={Cylinder.src}
+					style={{
+						translateY: translateY,
+					}}
+					alt=""
+				/>
 			</div>
 
 			<div className="relative container mx-auto px-4 py-16 md:py-24 lg:py-32">

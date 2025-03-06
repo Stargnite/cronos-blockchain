@@ -53,7 +53,7 @@ const TheHeart = () => {
 
 			<div className="container mx-auto gap-24 flex flex-col items-start">
 				<div className="container mx-auto flex items-center justify-center flex-col text-white">
-					<div className="grid grid-cols-2 grid-rows-2 gap-20">
+					<div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-20">
 						{data.map((item, index) => (
 							<div className="flex flex-col gap-y-4 max-w-72" key={index}> 
 								<div className="relative">

@@ -6,13 +6,13 @@ import Image from "next/image";
 
 const UniverseSection = () => {
 	return (
-		<section className="text-white px-44 py-24 relative">
+		<section className="text-white py-24 relative">
 		{/* Gradient spiral shape */}
-		<div className="absolute left-0 -bottom-96 -translate-y-1/2 w-[600px] h-[600px] opacity-80 animate-pulse">
+		<div className="absolute -left-40 md:-left-32 -bottom-20 md:-bottom-96 -translate-y-1/2 w-[600px] h-[600px] opacity-80 animate-pulse">
 			<Image src={spiral} alt="" className="size-72" />
 		</div>
 
-		<div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+		<div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 			<div className="max-w-2xl">
 				<p className="text-sm text-gray-400 uppercase tracking-wider mb-6">Community-owned and operated</p>
 
@@ -25,9 +25,9 @@ const UniverseSection = () => {
 					enables you to freely exchange assets and data across sovereign.
 				</p>
 
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-4 flex-wrap">
 					<Button variant="secondary" className="px-12 py-4 text-lg rounded-none 
-					bg-gradient-to-br from-white to-gray-600 cursor-pointer transition-color">
+					bg-gradient-to-br from-white to-gray-600 cursor-pointer transition-color ">
 						Learn
 					</Button>
 

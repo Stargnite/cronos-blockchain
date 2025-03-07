@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 import Sphere from "@/app/images/sphere.png"
+import Animation from "./animation"
 
 interface CommunityLinkProps {
   title: string
@@ -75,6 +76,7 @@ export default function CommunitySection() {
       className="bg-black text-white relative">
       {/* Purple gradient circle */}
       <div className="absolute -left-44 lg:-left-80 top-20 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px]">
+      <Animation duration={1} delay={.5} direction="x" reverse={true}>
         <motion.img
           style={{
             translateY: translateY,
@@ -82,6 +84,7 @@ export default function CommunitySection() {
           src={Sphere.src}
           alt=""
         />
+        </ Animation>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-24 lg:py-32">
